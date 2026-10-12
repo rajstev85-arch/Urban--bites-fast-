@@ -4,149 +4,223 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#173d2a">
-<title>Urban Bites Fast Food</title>
+<meta name="theme-color" content="#172b20">
+<title>Urban Bites Fast Food | Nyahururu</title>
+<meta name="description" content="Order affordable food combos from Urban Bites Fast Food in Nyahururu. Free delivery and payment after delivery.">
+<link rel="manifest" href="manifest.json">
 <style>
+:root{--green:#173d2b;--lime:#c9f36b;--cream:#fffaf0;--orange:#ff9d42}
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f7f6f0;color:#222}
-header{background:#173d2a;color:white;padding:22px 16px;text-align:center}
-header h1{margin:0;font-size:27px}
-header p{margin:8px 0 0}
-.notice{background:#f5bd43;padding:12px;text-align:center;font-weight:bold}
-main{padding:15px;max-width:750px;margin:auto}
-h2{color:#173d2a}
-.item{background:white;border-radius:12px;padding:14px;margin:10px 0;display:flex;justify-content:space-between;align-items:center;gap:10px;box-shadow:0 2px 7px #0001}
-.item p{margin:6px 0;color:#666;font-size:13px}
-.price{font-weight:bold;color:#173d2a}
-button{background:#173d2a;color:white;border:0;border-radius:8px;padding:10px 13px;font-weight:bold}
-.cart{background:white;padding:15px;border-radius:12px;margin-top:24px}
-.cartline{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #eee}
-.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
-.actions button{padding:14px 6px}
-.call{background:#d98c16}
-footer{text-align:center;padding:22px;color:#666;font-size:13px}
+body{margin:0;font-family:Arial,sans-serif;background:var(--cream);color:#202820}
+header{background:var(--green);color:white;padding:24px 16px 20px;text-align:center}
+.logo{font-size:42px}
+header h1{margin:6px 0;font-size:30px;letter-spacing:1px}
+header p{margin:8px 0;color:#e3eddf}
+.promo{background:var(--lime);color:#19341e;text-align:center;padding:13px 8px;font-weight:bold;line-height:1.8}
+main{max-width:1000px;margin:auto;padding:16px}
+.intro{padding:8px 0 12px}
+.intro h2{margin-bottom:6px}
+.intro p{color:#596458;line-height:1.5}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
+.filters button,.action{border:0;border-radius:22px;padding:11px 15px;font-weight:bold;cursor:pointer}
+.filters button{background:#e6eadf;color:#24412c}
+.filters button.active{background:var(--green);color:white}
+#search{width:100%;padding:14px;border:1px solid #d5ddcf;border-radius:12px;font-size:16px}
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:15px}
+.card{background:white;border:1px solid #e6e8df;border-radius:17px;overflow:hidden;box-shadow:0 3px 10px #1b32100a}
+.card img{width:100%;height:155px;object-fit:cover;background:#e8eddf}
+.cardbody{padding:14px}
+.card h3{margin:2px 0 8px;font-size:18px}
+.card p{margin:5px 0;color:#586258;line-height:1.45;font-size:14px}
+.price{font-size:23px;font-weight:bold;color:var(--green);margin:12px 0}
+.action{background:var(--green);color:white;width:100%;font-size:15px}
+.action:active{transform:scale(.98)}
+.cart{background:white;border:1px solid #dce4d7;border-radius:17px;padding:17px;margin:25px 0}
+.cart h2{margin-top:0}
+.cartrow{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #edf0e8;align-items:center}
+.qty button{border:0;border-radius:8px;padding:6px 10px;background:#e6efdf;font-weight:bold}
+.total{font-size:22px;font-weight:bold;display:flex;justify-content:space-between;margin:18px 0}
+input,textarea,select{font:inherit}
+.customer{display:grid;gap:10px;margin:14px 0}
+.customer input,.customer textarea{padding:12px;border:1px solid #d5ddcf;border-radius:10px;width:100%}
+.customer textarea{min-height:75px}
+.whatsapp{background:#16894a;margin-bottom:10px}
+.call{display:block;text-decoration:none;text-align:center;background:var(--orange);color:#222;padding:14px;border-radius:24px;font-weight:bold}
+.small{font-size:12px;color:#697367;line-height:1.5}
+footer{text-align:center;background:var(--green);color:white;padding:25px 14px;line-height:1.8}
+.hidden{display:none}
+@media(max-width:400px){main{padding:11px}.menu{grid-template-columns:1fr 1fr;gap:9px}.card img{height:112px}.cardbody{padding:10px}.card h3{font-size:15px}.card p{font-size:12px}.price{font-size:19px}.action{font-size:13px;padding:10px 5px}}
 </style>
 </head>
 <body>
 <header>
-<h1>🍔 URBAN BITES</h1>
-<p>FAST FOOD • Nyahururu, Laikipia</p>
-<p>Good food. Fair prices. Happy customers!</p>
+  <div class="logo">🍔🍟</div>
+  <h1>URBAN BITES</h1>
+  <p>FAST FOOD • COMBOS • GOOD VALUE</p>
+  <p>📍 Nyahururu Town, Laikipia County</p>
 </header>
-<div class="notice">🚚 FREE DELIVERY • PAY AFTER DELIVERY</div>
-<main>
-<p>Choose your meals, add them to your cart, then order through WhatsApp or call us.</p>
-<h2>⭐ Combos & Deals</h2>
-<div id="combos"></div>
-<h2>🍟 Individual Items</h2>
-<div id="menu"></div>
-<section class="cart">
-<h2>🛒 Your Cart (<span id="count">0</span>)</h2>
-<div id="cart">Your cart is empty.</div>
-<h3>Total: KSh <span id="total">0</span></h3>
-<label for="customer">Your name</label><br>
-<input id="customer" placeholder="Enter your name" style="width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:8px">
-<label for="location">Delivery location</label><br>
-<input id="location" placeholder="Estate, street or landmark" style="width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:8px">
-<div class="actions">
-<button onclick="order()">Order on WhatsApp</button>
-<button class="call" onclick="callUs()">Call Urban Bites</button>
+
+<div class="promo">
+  🚚 FREE DELIVERY &nbsp; | &nbsp; 💵 PAY AFTER DELIVERY
+  <br>Choose your combo, add to cart and place your order!
 </div>
-<p id="message" style="color:#b33;font-size:13px"></p>
+
+<main>
+<section class="intro">
+  <h2>Our Combo Menu 😋</h2>
+  <p>Great food combinations at friendly prices. Every menu option is a combo. Delivery within our service area is included in the listed price.</p>
+  <input id="search" type="search" placeholder="🔎 Search combos..." oninput="renderMenu()">
+  <div class="filters" id="filters"></div>
+</section>
+
+<section class="menu" id="menu"></section>
+
+<section class="cart" id="cart">
+  <h2>🛒 Your Order</h2>
+  <div id="cartitems">Your cart is empty. Add a combo to get started.</div>
+  <div class="total"><span>Total</span><span id="total">KSh 0</span></div>
+  <p class="small">Free delivery is included in the combo prices. Payment is made after delivery. Please confirm your delivery location with us.</p>
+  <div class="customer">
+    <input id="customerName" placeholder="Your name" autocomplete="name">
+    <input id="customerPhone" type="tel" placeholder="Your phone number" autocomplete="tel">
+    <textarea id="customerLocation" placeholder="Delivery location / estate / landmark"></textarea>
+    <textarea id="customerNotes" placeholder="Extra instructions (optional)"></textarea>
+  </div>
+  <button class="action whatsapp" onclick="sendOrder()">Order via WhatsApp</button>
+  <a class="call" id="callLink" href="tel:+254700000000">📞 CALL TO ORDER</a>
+  <p class="small">Before launch, replace the sample contact number in the code with your real Urban Bites phone number.</p>
 </section>
 </main>
-<footer>Urban Bites Fast Food · Nyahururu<br>Delivery and payment after delivery.</footer>
+
+<footer>
+  <strong>URBAN BITES FAST FOOD</strong><br>
+  Affordable combos. Friendly service.<br>
+  Nyahururu Town, Laikipia County<br>
+  🚚 FREE DELIVERY • PAY AFTER DELIVERY
+</footer>
+
 <script>
+/*
+  IMPORTANT:
+  Replace 2547XXXXXXXX with your real WhatsApp number.
+  Use country code 254, without + or spaces.
+*/
 const WHATSAPP_NUMBER = "2547XXXXXXXX";
-const PHONE_NUMBER = "07XXXXXXXX";
+const CALL_NUMBER = "+254700000000";
 
 const combos = [
- {id:1,name:"Quick Bite",desc:"6 bhajias",price:120},
- {id:2,name:"Coffee Break",desc:"Black coffee + toasted bread",price:200},
- {id:3,name:"Chips & Black Coffee",desc:"Chips + black coffee",price:280},
- {id:4,name:"Roll & Soda",desc:"Beef roll + soda",price:150},
- {id:5,name:"Urban Snack Box",desc:"Hungarian sausage + chips",price:220},
- {id:6,name:"Choma Feast",desc:"Choma beef + chips + soda",price:800}
-];
-
-const products = [
- {id:11,name:"Hungarian sausage",price:60},
- {id:12,name:"Vegetarian roll",price:40},
- {id:13,name:"Beef roll",price:70},
- {id:14,name:"Pepsi",price:70},
- {id:15,name:"Soda",price:100},
- {id:16,name:"Chips",price:150},
- {id:17,name:"Black Milo",price:60},
- {id:18,name:"Black coffee",price:150},
- {id:19,name:"White coffee",price:200},
- {id:20,name:"Toasted bread",price:60},
- {id:21,name:"Sandwich",price:120},
- {id:22,name:"Ugali",price:80},
- {id:23,name:"Kebab",price:100},
- {id:24,name:"Samosa",price:70},
- {id:25,name:"Bhajias (6 pieces)",price:120},
- {id:26,name:"Fry meat",price:350},
- {id:27,name:"Quarter chicken",price:300},
- {id:28,name:"Choma beef",price:550}
+{id:1,name:"Bhajia Buddy",desc:"6 bhajias + Pepsi",cost:110,price:190,cat:"Budget Bites",img:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=700&q=80"},
+{id:2,name:"Veggie Treat",desc:"2 vegetarian rolls + Pepsi",cost:100,price:180,cat:"Budget Bites",img:"https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=80"},
+{id:3,name:"Samosa Sip",desc:"1 samosa + Pepsi",cost:100,price:180,cat:"Budget Bites",img:"https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=700&q=80"},
+{id:4,name:"Hungarian Quick Bite",desc:"1 Hungarian sausage + Pepsi",cost:90,price:170,cat:"Budget Bites",img:"https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=700&q=80"},
+{id:5,name:"Morning Milo",desc:"Black Milo + toasted bread",cost:80,price:160,cat:"Breakfast",img:"https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80"},
+{id:6,name:"Beefy Sip",desc:"1 beef roll + Pepsi",cost:100,price:180,cat:"Budget Bites",img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80"},
+{id:7,name:"Chips & Pepsi",desc:"Chips + Pepsi",cost:150,price:250,cat:"Chips & Crunch",img:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=700&q=80"},
+{id:8,name:"Sausage Crunch",desc:"Chips + Hungarian sausage",cost:140,price:240,cat:"Chips & Crunch",img:"https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=700&q=80"},
+{id:9,name:"Beefy Crunch",desc:"Chips + beef roll",cost:150,price:250,cat:"Chips & Crunch",img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80"},
+{id:10,name:"Kebab Crunch",desc:"Chips + kebab",cost:170,price:270,cat:"Chips & Crunch",img:"https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=700&q=80"},
+{id:11,name:"Classic Chips",desc:"Chips + soda",cost:170,price:270,cat:"Chips & Crunch",img:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=700&q=80"},
+{id:12,name:"Double Crunch",desc:"Chips + 6 bhajias",cost:160,price:260,cat:"Chips & Crunch",img:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=700&q=80"},
+{id:13,name:"Chips & Coffee",desc:"Chips + black coffee",cost:200,price:300,cat:"Chips & Crunch",img:"https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80"},
+{id:14,name:"White Coffee Crunch",desc:"Chips + white coffee",cost:250,price:350,cat:"Chips & Crunch",img:"https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=80"},
+{id:15,name:"Coffee & Toast",desc:"Black coffee + toasted bread",cost:140,price:220,cat:"Breakfast",img:"https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80"},
+{id:16,name:"Sandwich & Milo",desc:"Sandwich + black Milo",cost:120,price:200,cat:"Breakfast",img:"https://images.unsplash.com/photo-1553909489-cd47e0ef937f?auto=format&fit=crop&w=700&q=80"},
+{id:17,name:"Urban Breakfast",desc:"Sandwich + white coffee",cost:230,price:330,cat:"Breakfast",img:"https://images.unsplash.com/photo-1553909489-cd47e0ef937f?auto=format&fit=crop&w=700&q=80"},
+{id:18,name:"Ugali Meat Mate",desc:"Ugali + fry meat",cost:350,price:450,cat:"Filling Meals",img:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"},
+{id:19,name:"Chicken Starter",desc:"Quarter chicken + chips",cost:340,price:450,cat:"Chicken & Meat",img:"https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=700&q=80"},
+{id:20,name:"Chicken Refresh",desc:"Quarter chicken + chips + Pepsi",cost:390,price:500,cat:"Chicken & Meat",img:"https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=700&q=80"},
+{id:21,name:"Chicken Classic",desc:"Quarter chicken + chips + soda",cost:410,price:520,cat:"Chicken & Meat",img:"https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=700&q=80"},
+{id:22,name:"Fry Meat Feast",desc:"Fry meat + chips",cost:400,price:500,cat:"Chicken & Meat",img:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"},
+{id:23,name:"Fry Meat Deluxe",desc:"Fry meat + chips + soda",cost:470,price:600,cat:"Chicken & Meat",img:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"},
+{id:24,name:"Choma Starter",desc:"Choma + Pepsi",cost:550,price:700,cat:"Choma Specials",img:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"},
+{id:25,name:"Choma & Chips",desc:"Choma + chips",cost:600,price:750,cat:"Choma Specials",img:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"},
+{id:26,name:"Choma Classic",desc:"Choma + chips + soda",cost:670,price:820,cat:"Choma Specials",img:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"},
+{id:27,name:"Urban Choma Feast",desc:"Choma + chips + soda + Hungarian sausage",cost:710,price:900,cat:"Choma Specials",img:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"}
 ];
 
 let cart = {};
+let activeCategory = "All Combos";
+const categories = ["All Combos","Budget Bites","Chips & Crunch","Breakfast","Filling Meals","Chicken & Meat","Choma Specials"];
 
-function renderItems(items,target){
- document.getElementById(target).innerHTML=items.map(x=>`
- <div class="item">
-  <div><strong>${x.name}</strong><p>${x.desc||"Freshly prepared, delivered to you"}</p><span class="price">KSh ${x.price}</span></div>
-  <button onclick="add(${x.id})">Add +</button>
- </div>`).join("");
+function money(n){return "KSh "+n.toLocaleString("en-KE");}
+
+function renderFilters(){
+ document.getElementById("filters").innerHTML = categories.map(c =>
+ `<button class="${c===activeCategory?'active':''}" onclick="setCategory('${c}')">${c}</button>`
+ ).join("");
 }
-function allItems(){return [...combos,...products]}
-function add(id){
- const item=allItems().find(x=>x.id===id);
- if(item)cart[id]=(cart[id]||0)+1;
- renderCart();
+
+function setCategory(c){activeCategory=c;renderFilters();renderMenu();}
+
+function renderMenu(){
+ const term=document.getElementById("search").value.toLowerCase();
+ const items=combos.filter(c=>(activeCategory==="All Combos"||c.cat===activeCategory)&&
+ (c.name+" "+c.desc+" "+c.cat).toLowerCase().includes(term));
+ document.getElementById("menu").innerHTML=items.map(c=>`
+ <article class="card">
+ <img src="${c.img}" alt="${c.name}" loading="lazy" onerror="this.style.display='none'">
+ <div class="cardbody">
+ <p>${c.cat}</p>
+ <h3>${c.name}</h3>
+ <p>${c.desc}</p>
+ <div class="price">${money(c.price)}</div>
+ <button class="action" onclick="addToCart(${c.id})">＋ Add to cart</button>
+ </div></article>`).join("")||"<p>No combos found. Try another search.</p>";
 }
-function change(id,delta){
+
+function addToCart(id){cart[id]=(cart[id]||0)+1;renderCart();}
+
+function changeQty(id,delta){
  cart[id]=(cart[id]||0)+delta;
  if(cart[id]<=0)delete cart[id];
  renderCart();
 }
+
 function renderCart(){
- const entries=Object.entries(cart);
- document.getElementById("count").textContent=entries.reduce((s,[,q])=>s+q,0);
- document.getElementById("total").textContent=entries.reduce((s,[id,q])=>s+allItems().find(x=>x.id==id).price*q,0);
- document.getElementById("cart").innerHTML=entries.length?entries.map(([id,q])=>{
- const x=allItems().find(i=>i.id==id);
- return `<div class="cartline"><span>${x.name}<br>KSh ${x.price} × ${q}</span><span><button onclick="change(${id},-1)">−</button> ${q} <button onclick="change(${id},1)">+</button></span></div>`;
- }).join(""):"Your cart is empty.";
-}
-function order(){
- const msg=document.getElementById("message");
- msg.textContent="";
- const name=document.getElementById("customer").value.trim();
- const location=document.getElementById("location").value.trim();
- if(!Object.keys(cart).length){msg.textContent="Please add something to your cart.";return}
- if(!name||!location){msg.textContent="Please enter your name and delivery location.";return}
- if(WHATSAPP_NUMBER.includes("X")){msg.textContent="The WhatsApp number must be set in the app code before ordering.";return}
- let textMsg="URBAN BITES ORDER%0A";
- textMsg+=encodeURIComponent("Name: "+name+"\nLocation: "+location+"\n\n");
- for(const [id,q] of Object.entries(cart)){
- const x=allItems().find(i=>i.id==id);
- textMsg+=encodeURIComponent(x.name+" × "+q+" = KSh "+x.price*q+"\n");
+ const ids=Object.keys(cart);
+ document.getElementById("cartitems")=document.getElementById("cartitems");
+ if(!ids.length){
+  document.getElementById("cartitems").innerHTML="Your cart is empty. Add a combo to get started.";
+ }else{
+  document.getElementById("cartitems").innerHTML=ids.map(id=>{
+   const c=combos.find(x=>x.id===Number(id));
+   return `<div class="cartrow">
+    <div><strong>${c.name}</strong><br><span class="small">${money(c.price)} each</span></div>
+    <div class="qty"><button onclick="changeQty(${c.id},-1)">−</button> ${cart[id]} <button onclick="changeQty(${c.id},1)">＋</button></div>
+   </div>`;
+  }).join("");
  }
- textMsg+=encodeURIComponent("\nTotal: KSh "+document.getElementById("total").textContent+"\nDelivery: FREE\nPayment: After delivery");
- window.location.href="https://wa.me/"+WHATSAPP_NUMBER+"?text="+textMsg;
+ const total=ids.reduce((sum,id)=>sum+combos.find(c=>c.id===Number(id)).price*cart[id],0);
+ document.getElementById("total").textContent=money(total);
 }
-function callUs(){
- if(PHONE_NUMBER.includes("X")){
- document.getElementById("message").textContent="Add your Urban Bites phone number in the app code first.";
- return;
- }
- window.location.href="tel:"+PHONE_NUMBER;
+
+function sendOrder(){
+ const ids=Object.keys(cart);
+ if(!ids.length){alert("Please add a combo to your cart first.");return;}
+ const name=document.getElementById("customerName").value.trim();
+ const phone=document.getElementById("customerPhone").value.trim();
+ const location=document.getElementById("customerLocation").value.trim();
+ const notes=document.getElementById("customerNotes").value.trim();
+ if(!name||!phone||!location){alert("Please enter your name, phone number and delivery location.");return;}
+ if(WHATSAPP_NUMBER.includes("X")){alert("Please set the real Urban Bites WhatsApp number in the code first.");return;}
+ let total=0;
+ let lines=ids.map(id=>{
+  const c=combos.find(x=>x.id===Number(id));
+  const sub=c.price*cart[id];total+=sub;
+  return `${cart[id]} x ${c.name} (${c.desc}) = ${money(sub)}`;
+ });
+ const msg=`URBAN BITES FAST FOOD ORDER\n\n${lines.join("\n")}\n\nTOTAL: ${money(total)}\nDelivery: FREE (included in combo prices)\nPayment: AFTER DELIVERY\n\nCustomer: ${name}\nPhone: ${phone}\nDelivery location: ${location}\nAdditional notes: ${notes||"None"}\n\nPlease confirm my order.`;
+ window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(msg),"_blank");
 }
-renderItems(combos,"combos");
-renderItems(products,"menu");
+
+document.getElementById("callLink").href="tel:"+CALL_NUMBER;
+renderFilters();
+renderMenu();
 renderCart();
 </script>
 </body>
-  </html>
-  
+ </html>
+const WHATSAPP_NUMBER = "254799378702";
+const CALL_NUMBER = "+254799378702";
+
+ 
