@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#173d2a">
+<title>Urban Bites Fast Food</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f7f6f0;color:#222}
+header{background:#173d2a;color:white;padding:22px 16px;text-align:center}
+header h1{margin:0;font-size:27px}
+header p{margin:8px 0 0}
+.notice{background:#f5bd43;padding:12px;text-align:center;font-weight:bold}
+main{padding:15px;max-width:750px;margin:auto}
+h2{color:#173d2a}
+.item{background:white;border-radius:12px;padding:14px;margin:10px 0;display:flex;justify-content:space-between;align-items:center;gap:10px;box-shadow:0 2px 7px #0001}
+.item p{margin:6px 0;color:#666;font-size:13px}
+.price{font-weight:bold;color:#173d2a}
+button{background:#173d2a;color:white;border:0;border-radius:8px;padding:10px 13px;font-weight:bold}
+.cart{background:white;padding:15px;border-radius:12px;margin-top:24px}
+.cartline{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #eee}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.actions button{padding:14px 6px}
+.call{background:#d98c16}
+footer{text-align:center;padding:22px;color:#666;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+<h1>🍔 URBAN BITES</h1>
+<p>FAST FOOD • Nyahururu, Laikipia</p>
+<p>Good food. Fair prices. Happy customers!</p>
+</header>
+<div class="notice">🚚 FREE DELIVERY • PAY AFTER DELIVERY</div>
+<main>
+<p>Choose your meals, add them to your cart, then order through WhatsApp or call us.</p>
+<h2>⭐ Combos & Deals</h2>
+<div id="combos"></div>
+<h2>🍟 Individual Items</h2>
+<div id="menu"></div>
+<section class="cart">
+<h2>🛒 Your Cart (<span id="count">0</span>)</h2>
+<div id="cart">Your cart is empty.</div>
+<h3>Total: KSh <span id="total">0</span></h3>
+<label for="customer">Your name</label><br>
+<input id="customer" placeholder="Enter your name" style="width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:8px">
+<label for="location">Delivery location</label><br>
+<input id="location" placeholder="Estate, street or landmark" style="width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:8px">
+<div class="actions">
+<button onclick="order()">Order on WhatsApp</button>
+<button class="call" onclick="callUs()">Call Urban Bites</button>
+</div>
+<p id="message" style="color:#b33;font-size:13px"></p>
+</section>
+</main>
+<footer>Urban Bites Fast Food · Nyahururu<br>Delivery and payment after delivery.</footer>
+<script>
+const WHATSAPP_NUMBER = "2547XXXXXXXX";
+const PHONE_NUMBER = "07XXXXXXXX";
+
+const combos = [
+ {id:1,name:"Quick Bite",desc:"6 bhajias",price:120},
+ {id:2,name:"Coffee Break",desc:"Black coffee + toasted bread",price:200},
+ {id:3,name:"Chips & Black Coffee",desc:"Chips + black coffee",price:280},
+ {id:4,name:"Roll & Soda",desc:"Beef roll + soda",price:150},
+ {id:5,name:"Urban Snack Box",desc:"Hungarian sausage + chips",price:220},
+ {id:6,name:"Choma Feast",desc:"Choma beef + chips + soda",price:800}
+];
+
+const products = [
+ {id:11,name:"Hungarian sausage",price:60},
+ {id:12,name:"Vegetarian roll",price:40},
+ {id:13,name:"Beef roll",price:70},
+ {id:14,name:"Pepsi",price:70},
+ {id:15,name:"Soda",price:100},
+ {id:16,name:"Chips",price:150},
+ {id:17,name:"Black Milo",price:60},
+ {id:18,name:"Black coffee",price:150},
+ {id:19,name:"White coffee",price:200},
+ {id:20,name:"Toasted bread",price:60},
+ {id:21,name:"Sandwich",price:120},
+ {id:22,name:"Ugali",price:80},
+ {id:23,name:"Kebab",price:100},
+ {id:24,name:"Samosa",price:70},
+ {id:25,name:"Bhajias (6 pieces)",price:120},
+ {id:26,name:"Fry meat",price:350},
+ {id:27,name:"Quarter chicken",price:300},
+ {id:28,name:"Choma beef",price:550}
+];
+
+let cart = {};
+
+function renderItems(items,target){
+ document.getElementById(target).innerHTML=items.map(x=>`
+ <div class="item">
+  <div><strong>${x.name}</strong><p>${x.desc||"Freshly prepared, delivered to you"}</p><span class="price">KSh ${x.price}</span></div>
+  <button onclick="add(${x.id})">Add +</button>
+ </div>`).join("");
+}
+function allItems(){return [...combos,...products]}
+function add(id){
+ const item=allItems().find(x=>x.id===id);
+ if(item)cart[id]=(cart[id]||0)+1;
+ renderCart();
+}
+function change(id,delta){
+ cart[id]=(cart[id]||0)+delta;
+ if(cart[id]<=0)delete cart[id];
+ renderCart();
+}
+function renderCart(){
+ const entries=Object.entries(cart);
+ document.getElementById("count").textContent=entries.reduce((s,[,q])=>s+q,0);
+ document.getElementById("total").textContent=entries.reduce((s,[id,q])=>s+allItems().find(x=>x.id==id).price*q,0);
+ document.getElementById("cart").innerHTML=entries.length?entries.map(([id,q])=>{
+ const x=allItems().find(i=>i.id==id);
+ return `<div class="cartline"><span>${x.name}<br>KSh ${x.price} × ${q}</span><span><button onclick="change(${id},-1)">−</button> ${q} <button onclick="change(${id},1)">+</button></span></div>`;
+ }).join(""):"Your cart is empty.";
+}
+function order(){
+ const msg=document.getElementById("message");
+ msg.textContent="";
+ const name=document.getElementById("customer").value.trim();
+ const location=document.getElementById("location").value.trim();
+ if(!Object.keys(cart).length){msg.textContent="Please add something to your cart.";return}
+ if(!name||!location){msg.textContent="Please enter your name and delivery location.";return}
+ if(WHATSAPP_NUMBER.includes("X")){msg.textContent="The WhatsApp number must be set in the app code before ordering.";return}
+ let textMsg="URBAN BITES ORDER%0A";
+ textMsg+=encodeURIComponent("Name: "+name+"\nLocation: "+location+"\n\n");
+ for(const [id,q] of Object.entries(cart)){
+ const x=allItems().find(i=>i.id==id);
+ textMsg+=encodeURIComponent(x.name+" × "+q+" = KSh "+x.price*q+"\n");
+ }
+ textMsg+=encodeURIComponent("\nTotal: KSh "+document.getElementById("total").textContent+"\nDelivery: FREE\nPayment: After delivery");
+ window.location.href="https://wa.me/"+WHATSAPP_NUMBER+"?text="+textMsg;
+}
+function callUs(){
+ if(PHONE_NUMBER.includes("X")){
+ document.getElementById("message").textContent="Add your Urban Bites phone number in the app code first.";
+ return;
+ }
+ window.location.href="tel:"+PHONE_NUMBER;
+}
+renderItems(combos,"combos");
+renderItems(products,"menu");
+renderCart();
+</script>
+</body>
+  </html>
+  
