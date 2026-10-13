@@ -40,7 +40,12 @@ button,.action{display:block;border:0;border-radius:9px;padding:12px;font-weight
 footer{background:var(--dark);color:white;text-align:center;padding:25px 12px;line-height:2;margin-top:25px}
 footer a{color:#ffd49a}
 .empty{text-align:center;padding:18px;color:#666}
-@media(max-width:480px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card img{height:120px}.cardbody{padding:10px}.card h3{font-size:15px}.card p{font-size:12px}.price{font-size:19px}.add{font-size:12px;padding:10px 5px}}
+@media(max-width:480px){
+.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.card img{height:120px}.cardbody{padding:10px}
+.card h3{font-size:15px}.card p{font-size:12px}
+.price{font-size:19px}.add{font-size:12px;padding:10px 5px}
+}
 </style>
 </head>
 <body>
@@ -59,8 +64,8 @@ footer a{color:#ffd49a}
 
 <main class="container">
 <div class="searchbox">
-<input id="search" type="search" placeholder="🔎 Search meals: chicken, chips, choma, coffee..." aria-label="Search combo menu">
-<p class="hint">Search by meal, ingredient, combo name or drink. Only combo orders are available.</p>
+<input id="search" type="search" placeholder="Search chicken, chips, choma, coffee..." aria-label="Search combo menu">
+<p class="hint">Search by meal, ingredient, combo name or drink. Combo orders only.</p>
 </div>
 
 <section>
@@ -69,10 +74,16 @@ footer a{color:#ffd49a}
 </section>
 
 <section>
+<h2>💑 Double Meals & Couples Deals</h2>
+<p class="hint">Sharing meals for couples, friends and two people. Free delivery included.</p>
+<div id="double" class="grid"></div>
+</section>
+
+<section>
 <h2>🍽️ Regular Combo Menu</h2>
-<p class="hint">Choose your combo, add it to your cart, and order through WhatsApp.</p>
+<p class="hint">Choose a combo, add it to your cart and order through WhatsApp.</p>
 <div id="regular" class="grid"></div>
-<p id="noresults" class="empty" hidden>No matching combos found. Try another search or call us for assistance.</p>
+<p id="noresults" class="empty" hidden>No matching combos found. Try another search.</p>
 </section>
 
 <section class="cart" id="cart">
@@ -107,7 +118,7 @@ Good food • Fair prices • Convenient delivery<br>
 
 <script>
 const combos = [
-{id:"s1",offer:1,name:"Bhajia Buddy Deal",items:"6 bhajias + Pepsi",price:200,tag:"SPECIAL OFFER",img:0},
+{id:"s1",offer:1,name:"Bhajia Buddy Deal",items:"6 bhajias + Pepsi",price:200,tag:"SPECIAL OFFER",img:1},
 {id:"s2",offer:1,name:"Morning Munch",items:"Black Milo + toasted bread",price:200,tag:"BREAKFAST DEAL",img:5},
 {id:"s3",offer:1,name:"Hungarian Snack Deal",items:"Hungarian sausage + Pepsi",price:200,tag:"SPECIAL OFFER",img:7},
 {id:"s4",offer:1,name:"Samosa Chill",items:"Samosa + Pepsi",price:200,tag:"QUICK BITE",img:2},
@@ -115,6 +126,17 @@ const combos = [
 {id:"s6",offer:1,name:"Chips & Pepsi",items:"Chips + Pepsi",price:230,tag:"POPULAR",img:0},
 {id:"s7",offer:1,name:"Vegetarian Snack Box",items:"Vegetarian rolls + toasted bread + Pepsi",price:230,tag:"SPECIAL OFFER",img:2},
 {id:"s8",offer:1,name:"Coffee Break",items:"Black coffee + toasted bread",price:200,tag:"BREAKFAST DEAL",img:5},
+
+{id:"d1",double:1,name:"Couples Snack Date",items:"2 Hungarian sausages + 2 Pepsis",price:320,tag:"FOR TWO",img:7},
+{id:"d2",double:1,name:"Chips & Soda for Two",items:"2 portions of chips + 2 sodas",price:480,tag:"SHARING DEAL",img:0},
+{id:"d3",double:1,name:"Sandwich Date",items:"2 sandwiches + 2 Pepsis",price:400,tag:"FOR TWO",img:5},
+{id:"d4",double:1,name:"Double Roll & Chips",items:"2 beef rolls + 2 portions of chips + 2 Pepsis",price:550,tag:"FOR TWO",img:2},
+{id:"d5",double:1,name:"Chicken Lovers for Two",items:"2 quarter chickens + 2 portions of chips + 2 sodas",price:1050,tag:"CHICKEN FEAST",img:4},
+{id:"d6",double:1,name:"Chicken & Ugali for Two",items:"2 quarter chickens + 2 ugali",price:750,tag:"HEARTY MEAL",img:6},
+{id:"d7",double:1,name:"Choma Sharing Feast",items:"Choma beef + 2 portions of chips + 2 sodas",price:1050,tag:"SHARING FEAST",img:3},
+{id:"d8",double:1,name:"Double Kebab Crunch",items:"2 kebabs + 2 portions of chips + 2 Pepsis",price:590,tag:"FOR TWO",img:2},
+{id:"d9",double:1,name:"Coffee Date for Two",items:"2 white coffees + 2 toasted breads",price:520,tag:"COFFEE DATE",img:5},
+{id:"d10",double:1,name:"Bhajia Sharing Box",items:"12 bhajias + 2 Pepsis",price:350,tag:"SHARING DEAL",img:1},
 
 {id:"r1",name:"Sandwich & Pepsi",items:"Sandwich + Pepsi",price:220,img:5},
 {id:"r2",name:"Bhajia Coffee Break",items:"6 bhajias + black coffee",price:230,img:1},
@@ -139,15 +161,6 @@ const combos = [
 {id:"r21",name:"Choma & Ugali",items:"Choma beef + ugali",price:650,img:3},
 {id:"r22",name:"Choma Chips Combo",items:"Choma beef + chips",price:700,img:3},
 {id:"r23",name:"Urban Choma Feast",items:"Choma beef + chips + soda",price:780,img:3}
- 
-{id:"r23",name:"Urban Choma Feast",items:"Choma beef + chips + soda",price:780,img:3},
-{id:"d1",name:"Double Chips Deal",items:"2 portions of chips + 2 Pepsis",price:350,tag:"DOUBLE MEAL",img:0},
-{id:"d2",name:"Double Snack Box",items:"2 Hungarian sausages + 2 Pepsis",price:300,tag:"DOUBLE MEAL",img:7},
-{id:"d3",name:"Double Breakfast Deal",items:"2 black Milos + 2 toasted breads",price:350,tag:"DOUBLE MEAL",img:5}
-];
-
-const photos = [
- 
 ];
 
 const photos = [
@@ -165,12 +178,15 @@ const cart = {};
 const money = n => "KSh " + n.toLocaleString("en-KE");
 
 function render(){
- const query = document.getElementById("search").value.trim().toLowerCase();
- const offers = combos.filter(c=>c.offer && (c.name+" "+c.items).toLowerCase().includes(query));
- const regular = combos.filter(c=>!c.offer && (c.name+" "+c.items).toLowerCase().includes(query)).sort((a,b)=>a.price-b.price);
+ const query=document.getElementById("search").value.trim().toLowerCase();
+ const matches=c=>(c.name+" "+c.items).toLowerCase().includes(query);
+ const offers=combos.filter(c=>c.offer&&matches(c));
+ const doubles=combos.filter(c=>c.double&&matches(c));
+ const regular=combos.filter(c=>!c.offer&&!c.double&&matches(c)).sort((a,b)=>a.price-b.price);
  draw(offers,"offers");
+ draw(doubles,"double");
  draw(regular,"regular");
- document.getElementById("noresults").hidden = offers.length+regular.length>0;
+ document.getElementById("noresults").hidden=offers.length+doubles.length+regular.length>0;
 }
 
 function draw(items,target){
@@ -179,10 +195,15 @@ function draw(items,target){
  items.forEach(c=>{
   const card=document.createElement("article");card.className="card";
   const img=document.createElement("img");
-  img.src=photos[c.img];img.alt=c.name+" food photo";img.loading="lazy";
-  img.onerror=()=>{img.onerror=null;img.src="https://placehold.co/600x400/fff0d7/704214?text=Urban+Bites+Combo"};
+  img.src=photos[c.img];
+  img.alt=c.name+" food photo";
+  img.loading="lazy";
+  img.onerror=()=>{img.onerror=null;img.src="https://placehold.co/600x400/fff0d7/704214?text=Urban+Bites";};
   const body=document.createElement("div");body.className="cardbody";
-  if(c.tag){const tag=document.createElement("span");tag.className="tag";tag.textContent=c.tag;body.append(tag);}
+  if(c.tag){
+   const tag=document.createElement("span");
+   tag.className="tag";tag.textContent=c.tag;body.append(tag);
+  }
   const h=document.createElement("h3");h.textContent=c.name;
   const p=document.createElement("p");p.textContent=c.items;
   const price=document.createElement("div");price.className="price";price.textContent=money(c.price);
@@ -230,7 +251,10 @@ function checkout(){
  if(!name||!location){alert("Please enter your name and delivery location.");return;}
  let total=0;
  let msg="Hello Urban Bites! I want to order:\n\nName: "+name+"\nDelivery location: "+location+"\n\n";
- entries.forEach(c=>{total+=c.price*cart[c.id];msg+=cart[c.id]+" x "+c.name+" ("+c.items+") = "+money(c.price*cart[c.id])+"\n";});
+ entries.forEach(c=>{
+  total+=c.price*cart[c.id];
+  msg+=cart[c.id]+" x "+c.name+" ("+c.items+") = "+money(c.price*cart[c.id])+"\n";
+ });
  msg+="\nTOTAL: "+money(total)+"\nFree delivery included.\nPayment after delivery.";
  if(notes)msg+="\nExtra instructions: "+notes;
  msg+="\nPlease confirm availability and delivery time. Thank you!";
@@ -242,5 +266,5 @@ render();
 drawCart();
 </script>
 </body>
-  </html>
-  
+ </html>
+ 
