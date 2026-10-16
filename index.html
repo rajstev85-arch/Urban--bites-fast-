@@ -3,268 +3,453 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#171717">
+<meta name="description" content="Urban Bites Fast Food in Nyahururu. Affordable meal combos, couples deals and family offers with free delivery.">
 <title>Urban Bites Fast Food | Nyahururu</title>
+
 <style>
-:root{--orange:#ff9200;--dark:#191919;--cream:#fff8ef;--green:#148447}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:var(--cream);color:var(--dark)}
-header{background:var(--dark);color:white;text-align:center;padding:24px 12px}
-.logo{font-size:42px}
-h1{margin:5px;font-size:29px}
-header p{margin:7px}
-.notice{background:var(--green);color:white;text-align:center;padding:13px 8px;font-weight:bold;line-height:1.8}
-.container{width:min(1100px,94%);margin:auto}
-.searchbox{position:sticky;top:0;z-index:5;background:var(--cream);padding:12px 0}
-input,textarea{width:100%;padding:13px;border:1px solid #ccc;border-radius:9px;font-size:16px}
-h2{margin-top:28px}
-.hint{font-size:14px;color:#666;line-height:1.5}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
-.card{background:white;border:1px solid #eee;border-radius:14px;overflow:hidden;box-shadow:0 3px 10px #0000000b;display:flex;flex-direction:column}
-.card img{width:100%;height:165px;object-fit:cover;background:#eee}
-.cardbody{padding:14px;display:flex;flex-direction:column;flex:1}
-.tag{font-size:11px;font-weight:bold;color:#854400;background:#fff0d7;border-radius:20px;padding:6px 9px;align-self:flex-start}
-.card h3{margin:10px 0 6px}
-.card p{font-size:14px;line-height:1.5;margin:5px 0}
-.price{font-size:23px;font-weight:bold;color:#d56e00;margin-top:auto;padding-top:12px}
-button,.action{display:block;border:0;border-radius:9px;padding:12px;font-weight:bold;font-size:15px;text-align:center;cursor:pointer;text-decoration:none;margin-top:10px}
-.add{background:var(--orange);color:#171717}
-.cart{background:white;padding:17px;border-radius:14px;margin:28px 0;border:1px solid #eee}
-.cartrow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid #eee}
-.qty{display:flex;align-items:center;gap:7px}
-.qty button{margin:0;padding:7px 11px;background:#eee}
-.total{font-size:23px;font-weight:bold;margin:18px 0}
-.wa{background:#168747;color:white}
-.call{background:#1877db;color:white}
-footer{background:var(--dark);color:white;text-align:center;padding:25px 12px;line-height:2;margin-top:25px}
-footer a{color:#ffd49a}
-.empty{text-align:center;padding:18px;color:#666}
-@media(max-width:480px){
-.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
-.card img{height:120px}.cardbody{padding:10px}
-.card h3{font-size:15px}.card p{font-size:12px}
-.price{font-size:19px}.add{font-size:12px;padding:10px 5px}
+:root {
+  --orange: #ff9200;
+  --dark: #171717;
+  --card: #242424;
+  --muted: #bdbdbd;
+  --green: #20c767;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #111;
+  color: #fff;
+}
+button, a { font: inherit; }
+a { color: inherit; text-decoration: none; }
+header {
+  background: #191919;
+  border-bottom: 2px solid var(--orange);
+  padding: 15px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.header-inner {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.brand { font-size: 21px; font-weight: 900; }
+.brand span { color: var(--orange); }
+.header-cart {
+  border: 0;
+  border-radius: 25px;
+  background: var(--orange);
+  color: #171717;
+  font-weight: 800;
+  padding: 10px 13px;
+  cursor: pointer;
+}
+.delivery-strip {
+  text-align: center;
+  background: var(--orange);
+  color: #171717;
+  padding: 11px 8px;
+  font-size: 14px;
+  font-weight: 800;
+}
+.hero {
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.93), rgba(0,0,0,.48)),
+    url("https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1400&q=85")
+    center/cover;
+  padding: 48px 20px;
+}
+.hero-content { max-width: 1100px; width: 100%; margin: auto; }
+.hero h1 {
+  font-size: clamp(34px, 7vw, 58px);
+  line-height: 1.05;
+  margin: 0 0 14px;
+}
+.hero h1 span { color: var(--orange); }
+.hero p { max-width: 520px; color: #eee; line-height: 1.7; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.btn {
+  display: inline-block;
+  padding: 13px 17px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--orange);
+  color: #171717;
+  font-weight: 800;
+  cursor: pointer;
+  text-align: center;
+}
+.btn-green { background: var(--green); color: #061c0e; }
+.btn-outline { border: 1px solid #888; background: transparent; color: #fff; }
+.container { max-width: 1100px; padding: 0 16px; margin: auto; }
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 22px auto;
+}
+.feature {
+  background: #202020;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 13px 8px;
+  text-align: center;
+  font-size: 13px;
+}
+.feature strong { display: block; color: var(--orange); margin-bottom: 5px; }
+.section-heading { margin: 36px 0 17px; }
+.section-heading h2 { font-size: 25px; margin: 0 0 7px; }
+.section-heading p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+.category-nav { display: flex; gap: 8px; overflow-x: auto; padding: 5px 0 15px; }
+.category-nav a {
+  white-space: nowrap;
+  border: 1px solid #444;
+  border-radius: 25px;
+  padding: 9px 13px;
+  font-size: 13px;
+}
+.category-nav a:hover { background: var(--orange); color: #111; }
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.meal-card {
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid #333;
+  border-radius: 13px;
+  display: flex;
+  flex-direction: column;
+}
+.meal-card img {
+  display: block;
+  width: 100%;
+  height: 175px;
+  object-fit: cover;
+  background: #333;
+}
+.meal-info { padding: 14px; display: flex; flex-direction: column; flex: 1; }
+.tag {
+  display: inline-block;
+  color: #171717;
+  background: var(--orange);
+  padding: 5px 8px;
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: 900;
+  align-self: flex-start;
+  margin-bottom: 9px;
+}
+.meal-info h3 { font-size: 17px; margin: 0 0 8px; }
+.meal-info p { color: #c9c9c9; font-size: 13px; line-height: 1.5; margin: 0 0 12px; }
+.price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: auto;
+}
+.price { color: var(--orange); font-size: 21px; font-weight: 900; }
+.add-btn {
+  border: 0;
+  background: var(--orange);
+  color: #171717;
+  border-radius: 7px;
+  padding: 10px 12px;
+  font-weight: 900;
+  cursor: pointer;
+}
+.add-btn:active, .btn:active { transform: scale(.98); }
+.cart-panel {
+  margin: 38px 0;
+  background: #202020;
+  border: 1px solid #444;
+  border-radius: 14px;
+  padding: 18px;
+}
+.cart-panel h2 { margin-top: 0; }
+.cart-empty { color: var(--muted); font-size: 14px; }
+.cart-line {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 0;
+  border-bottom: 1px solid #3a3a3a;
+  font-size: 14px;
+}
+.qty-controls { display: flex; align-items: center; gap: 8px; }
+.qty-controls button {
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 6px;
+  background: #383838;
+  color: white;
+  font-weight: 900;
+  cursor: pointer;
+}
+.remove-btn { color: #ff8585 !important; }
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 17px 0;
+  font-size: 20px;
+  font-weight: 900;
+}
+.cart-total span:last-child { color: var(--orange); }
+.checkout-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.checkout-actions .btn { width: 100%; }
+.note { color: var(--muted); font-size: 12px; line-height: 1.6; }
+.contact-box {
+  background: #242424;
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 35px;
+  text-align: center;
+}
+.contact-box h2 { margin-top: 0; }
+.contact-box p { color: #ccc; line-height: 1.6; }
+footer {
+  background: #080808;
+  border-top: 1px solid #333;
+  text-align: center;
+  color: #aaa;
+  padding: 22px 14px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+.floating-call {
+  position: fixed;
+  right: 15px;
+  bottom: 16px;
+  z-index: 20;
+  border-radius: 50px;
+  padding: 14px 17px;
+  background: var(--green);
+  color: #071b0c;
+  font-weight: 900;
+  box-shadow: 0 5px 20px #0008;
+}
+@media (max-width: 760px) {
+  .menu-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .meal-card img { height: 135px; }
+  .meal-info { padding: 10px; }
+  .meal-info h3 { font-size: 15px; }
+  .price { font-size: 18px; }
+  .add-btn { padding: 9px; font-size: 12px; }
+}
+@media (max-width: 380px) {
+  .menu-grid { grid-template-columns: 1fr; }
+  .meal-card img { height: 200px; }
+  .features { grid-template-columns: 1fr; }
+  .checkout-actions { grid-template-columns: 1fr; }
 }
 </style>
 </head>
+
 <body>
 <header>
-<div class="logo">🍔🍟</div>
-<h1>URBAN BITES</h1>
-<p><strong>FAST FOOD • COMBOS • GREAT VALUE</strong></p>
-<p>📍 Nyahururu Town, Laikipia County</p>
+  <div class="header-inner">
+    <a class="brand" href="#">URBAN <span>BITES</span></a>
+    <button class="header-cart" onclick="document.getElementById('cart').scrollIntoView({behavior:'smooth'})">
+      🛒 Cart <span id="cart-count">0</span>
+    </button>
+  </div>
 </header>
 
-<div class="notice">
-🚚 FREE DELIVERY INCLUDED IN DISPLAYED PRICES<br>
-💵 PAY AFTER DELIVERY — NO UPFRONT PAYMENT<br>
-📞 0799378702
+<div class="delivery-strip">
+  FREE DELIVERY INCLUDED IN DISPLAYED PRICES · PAY AFTER DELIVERY
 </div>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Good Food.<br><span>Better Deals.</span></h1>
+    <p>
+      Welcome to Urban Bites Fast Food in Nyahururu.
+      Enjoy tasty meal combos, couples treats and family deals
+      delivered to your door.
+    </p>
+    <div class="hero-actions">
+      <a class="btn" href="#menu">EXPLORE OUR DEALS</a>
+      <a class="btn btn-green" href="https://wa.me/254799378702?text=Hello%20Urban%20Bites%2C%20I%20would%20like%20to%20order.">ORDER ON WHATSAPP</a>
+    </div>
+  </div>
+</section>
 
 <main class="container">
-<div class="searchbox">
-<input id="search" type="search" placeholder="Search chicken, chips, choma, coffee..." aria-label="Search combo menu">
-<p class="hint">Search by meal, ingredient, combo name or drink. Combo orders only.</p>
-</div>
+  <div class="features">
+    <div class="feature"><strong>FREE DELIVERY</strong>Included in listed prices</div>
+    <div class="feature"><strong>PAY AFTER</strong>Pay when your order arrives</div>
+    <div class="feature"><strong>CALL OR WHATSAPP</strong>0799378702</div>
+  </div>
 
-<section>
-<h2>🔥 Special Offers</h2>
-<div id="offers" class="grid"></div>
-</section>
+  <div class="section-heading" id="menu">
+    <h2>Find Your Perfect Deal 🍽️</h2>
+    <p>Combos and meal deals only. Choose your favourites and add them to your cart.</p>
+  </div>
 
-<section>
-<h2>💑 Double Meals & Couples Deals</h2>
-<p class="hint">Sharing meals for couples, friends and two people. Free delivery included.</p>
-<div id="double" class="grid"></div>
-</section>
+  <nav class="category-nav">
+    <a href="#quick">Affordable Combos</a>
+    <a href="#double">Double Meals</a>
+    <a href="#triple">Triple Meals</a>
+    <a href="#couples">Couples Deals</a>
+    <a href="#family">Family Deals</a>
+    <a href="#special">Special Offers</a>
+  </nav>
 
-<section>
-<h2>🍽️ Regular Combo Menu</h2>
-<p class="hint">Choose a combo, add it to your cart and order through WhatsApp.</p>
-<div id="regular" class="grid"></div>
-<p id="noresults" class="empty" hidden>No matching combos found. Try another search.</p>
-</section>
+  <section id="quick">
+    <div class="section-heading">
+      <h2>Affordable Combos</h2>
+      <p>Everyday options for one person. Free delivery is included.</p>
+    </div>
+    <div class="menu-grid" id="quick-grid"></div>
+  </section>
 
-<section class="cart" id="cart">
-<h2>🛒 Your Cart</h2>
-<p id="empty">Your cart is empty. Add a combo to begin.</p>
-<div id="cartitems"></div>
-<div class="total">Total: <span id="total">KSh 0</span></div>
-<p class="hint">Delivery is included in the displayed prices. Pay after delivery.</p>
+  <section id="double">
+    <div class="section-heading">
+      <h2>Double Meals</h2>
+      <p>Two-person combinations for sharing.</p>
+    </div>
+    <div class="menu-grid" id="double-grid"></div>
+  </section>
 
-<label for="customer"><strong>Your name</strong></label>
-<input id="customer" placeholder="Enter your name">
+  <section id="triple">
+    <div class="section-heading">
+      <h2>Triple Meals</h2>
+      <p>Three-person deals for friends or small groups.</p>
+    </div>
+    <div class="menu-grid" id="triple-grid"></div>
+  </section>
 
-<label for="location" style="display:block;margin-top:12px"><strong>Delivery location</strong></label>
-<input id="location" placeholder="Estate, building or nearby landmark">
+  <section id="couples">
+    <div class="section-heading">
+      <h2>Couples Deals ❤️</h2>
+      <p>Share a meal and enjoy more value together.</p>
+    </div>
+    <div class="menu-grid" id="couples-grid"></div>
+  </section>
 
-<label for="notes" style="display:block;margin-top:12px"><strong>Extra instructions (optional)</strong></label>
-<textarea id="notes" placeholder="Anything we should know?" rows="3"></textarea>
+  <section id="family">
+    <div class="section-heading">
+      <h2>Family Deals</h2>
+      <p>Food bundles for family meals and get-togethers.</p>
+    </div>
+    <div class="menu-grid" id="family-grid"></div>
+  </section>
 
-<button class="wa" onclick="checkout()">💬 SEND ORDER ON WHATSAPP</button>
-<a class="action call" href="tel:0799378702">📞 CALL TO ORDER</a>
-</section>
+  <section id="special">
+    <div class="section-heading">
+      <h2>Urban Bites Special Offers 🔥</h2>
+      <p>Special combinations for a satisfying treat.</p>
+    </div>
+    <div class="menu-grid" id="special-grid"></div>
+  </section>
+
+  <section class="cart-panel" id="cart">
+    <h2>🛒 Your Shopping Cart</h2>
+    <div id="cart-items"><p class="cart-empty">Your cart is empty. Add a deal from the menu above.</p></div>
+    <div class="cart-total">
+      <span>Total (delivery included)</span>
+      <span id="cart-total">KSh 0</span>
+    </div>
+    <p class="note">Please provide your name, delivery location and any special instructions when placing your order. Payment is after delivery.</p>
+    <div class="checkout-actions">
+      <button class="btn btn-green" onclick="checkoutWhatsApp()">ORDER VIA WHATSAPP</button>
+      <a class="btn btn-outline" href="tel:0799378702">CALL 0799378702</a>
+    </div>
+  </section>
+
+  <section class="contact-box">
+    <h2>Craving Something Delicious?</h2>
+    <p>Order from Urban Bites Fast Food, Nyahururu, Laikipia County.</p>
+    <p><strong>Call:</strong> 0799378702</p>
+    <p><strong>Delivery:</strong> Free delivery included in displayed prices.</p>
+    <div class="hero-actions" style="justify-content:center">
+      <a class="btn" href="tel:0799378702">CALL US NOW</a>
+      <a class="btn btn-green" href="https://wa.me/254799378702?text=Hello%20Urban%20Bites%2C%20I%20want%20to%20order.">WHATSAPP US</a>
+    </div>
+  </section>
 </main>
 
 <footer>
-<strong>URBAN BITES FAST FOOD</strong><br>
-Good food • Fair prices • Convenient delivery<br>
-📍 Nyahururu Town, Laikipia County<br>
-<a href="tel:0799378702">Call: 0799378702</a><br>
-<a href="https://wa.me/254799378702">WhatsApp: 0799378702</a><br>
-🚚 Free delivery • 💵 Pay after delivery
+  <strong>URBAN BITES FAST FOOD</strong><br>
+  Nyahururu, Laikipia County, Kenya<br>
+  Call / WhatsApp: 0799378702<br>
+  Good food, fair prices, friendly service.
 </footer>
 
+<a class="floating-call" href="tel:0799378702">☎ CALL NOW</a>
+
 <script>
-const combos = [
-{id:"s1",offer:1,name:"Bhajia Buddy Deal",items:"6 bhajias + Pepsi",price:200,tag:"SPECIAL OFFER",img:1},
-{id:"s2",offer:1,name:"Morning Munch",items:"Black Milo + toasted bread",price:200,tag:"BREAKFAST DEAL",img:5},
-{id:"s3",offer:1,name:"Hungarian Snack Deal",items:"Hungarian sausage + Pepsi",price:200,tag:"SPECIAL OFFER",img:7},
-{id:"s4",offer:1,name:"Samosa Chill",items:"Samosa + Pepsi",price:200,tag:"QUICK BITE",img:2},
-{id:"s5",offer:1,name:"Roll & Milo",items:"Beef roll + black Milo",price:200,tag:"SNACK DEAL",img:5},
-{id:"s6",offer:1,name:"Chips & Pepsi",items:"Chips + Pepsi",price:230,tag:"POPULAR",img:0},
-{id:"s7",offer:1,name:"Vegetarian Snack Box",items:"Vegetarian rolls + toasted bread + Pepsi",price:230,tag:"SPECIAL OFFER",img:2},
-{id:"s8",offer:1,name:"Coffee Break",items:"Black coffee + toasted bread",price:200,tag:"BREAKFAST DEAL",img:5},
+const phone = "254799378702";
 
-{id:"d1",double:1,name:"Couples Snack Date",items:"2 Hungarian sausages + 2 Pepsis",price:320,tag:"FOR TWO",img:7},
-{id:"d2",double:1,name:"Chips & Soda for Two",items:"2 portions of chips + 2 sodas",price:480,tag:"SHARING DEAL",img:0},
-{id:"d3",double:1,name:"Sandwich Date",items:"2 sandwiches + 2 Pepsis",price:400,tag:"FOR TWO",img:5},
-{id:"d4",double:1,name:"Double Roll & Chips",items:"2 beef rolls + 2 portions of chips + 2 Pepsis",price:550,tag:"FOR TWO",img:2},
-{id:"d5",double:1,name:"Chicken Lovers for Two",items:"2 quarter chickens + 2 portions of chips + 2 sodas",price:1050,tag:"CHICKEN FEAST",img:4},
-{id:"d6",double:1,name:"Chicken & Ugali for Two",items:"2 quarter chickens + 2 ugali",price:750,tag:"HEARTY MEAL",img:6},
-{id:"d7",double:1,name:"Choma Sharing Feast",items:"Choma beef + 2 portions of chips + 2 sodas",price:1050,tag:"SHARING FEAST",img:3},
-{id:"d8",double:1,name:"Double Kebab Crunch",items:"2 kebabs + 2 portions of chips + 2 Pepsis",price:590,tag:"FOR TWO",img:2},
-{id:"d9",double:1,name:"Coffee Date for Two",items:"2 white coffees + 2 toasted breads",price:520,tag:"COFFEE DATE",img:5},
-{id:"d10",double:1,name:"Bhajia Sharing Box",items:"12 bhajias + 2 Pepsis",price:350,tag:"SHARING DEAL",img:1},
+/*
+  Prices are proposed selling prices in KSh, with delivery included.
+  Confirm food supplier prices and portions before publishing.
+  Replace any photo URL if you have your own food photographs.
+*/
+const meals = [
+  // Affordable combos
+  {id:"a1",section:"quick",name:"Chapati & Beans Combo",desc:"Chapati served with a hearty beans portion.",price:250,tag:"BUDGET PICK",img:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80"},
+  {id:"a2",section:"quick",name:"Chapati & Egg Combo",desc:"Chapati with eggs for a simple, filling meal.",price:250,tag:"QUICK BITE",img:"https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=700&q=80"},
+  {id:"a3",section:"quick",name:"Chips & Soda Combo",desc:"A portion of chips with a refreshing soda.",price:250,tag:"POPULAR",img:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=700&q=80"},
+  {id:"a4",section:"quick",name:"Six Bhajias & Soda",desc:"Six bhajias with a cold soda.",price:250,tag:"CRUNCH TIME",img:"https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=80"},
+  {id:"a5",section:"quick",name:"Beef Roll & Soda",desc:"A beef roll paired with a refreshing soda.",price:200,tag:"SNACK DEAL",img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80"},
+  {id:"a6",section:"quick",name:"Hungarian & Chips",desc:"Hungarian sausage served with chips.",price:250,tag:"FAVOURITE",img:"https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=700&q=80"},
+  {id:"a7",section:"quick",name:"Ugali & Fry Meat",desc:"Ugali served with a portion of fry meat.",price:450,tag:"HEARTY MEAL",img:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80"},
+  {id:"a8",section:"quick",name:"Quarter Chicken & Ugali",desc:"Quarter chicken with ugali.",price:390,tag:"CHICKEN DEAL",img:"https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=700&q=80"},
+  {id:"a9",section:"quick",name:"Quarter Chicken & Chips",desc:"Quarter chicken served with chips.",price:500,tag:"BEST SELLER",img:"https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=700&q=80"},
+  {id:"a10",section:"quick",name:"Chips & White Coffee",desc:"Chips with a cup of white coffee.",price:350,tag:"UNIQUE COMBO",img:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=700&q=80"},
+  {id:"a11",section:"quick",name:"Chips & Black Coffee",desc:"Chips with a cup of black coffee.",price:300,tag:"COFFEE BREAK",img:"https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80"},
+  {id:"a12",section:"quick",name:"Samosa & Coffee Combo",desc:"Samosa with a hot coffee.",price:250,tag:"TEA-TIME TREAT",img:"https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80"},
+  {id:"a13",section:"quick",name:"Kebab & Chips",desc:"Kebab served alongside chips.",price:300,tag:"TASTY PICK",img:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=700&q=80"},
+  {id:"a14",section:"quick",name:"Sandwich & Coffee",desc:"A sandwich and a cup of coffee.",price:300,tag:"LUNCH DEAL",img:"https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=700&q=80"},
+  {id:"a15",section:"quick",name:"Toast & Coffee",desc:"Toasted bread served with coffee.",price:250,tag:"MORNING DEAL",img:"https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80"},
 
-{id:"r1",name:"Sandwich & Pepsi",items:"Sandwich + Pepsi",price:220,img:5},
-{id:"r2",name:"Bhajia Coffee Break",items:"6 bhajias + black coffee",price:230,img:1},
-{id:"r3",name:"Hungarian Chips Combo",items:"Hungarian sausage + chips",price:240,img:7},
-{id:"r4",name:"Beef Roll & Chips",items:"Beef roll + chips",price:240,img:0},
-{id:"r5",name:"Kebab Crunch",items:"Kebab + chips",price:260,img:2},
-{id:"r6",name:"Street Snack Feast",items:"Samosa + kebab + Pepsi",price:260,img:2},
-{id:"r7",name:"Coffee & Sandwich",items:"Sandwich + black coffee",price:280,img:5},
-{id:"r8",name:"Milo Breakfast Combo",items:"Black Milo + sandwich",price:240,img:5},
-{id:"r9",name:"White Coffee Treat",items:"Chips + white coffee",price:350,img:0},
-{id:"r10",name:"Chips & Sausage Feast",items:"Chips + Hungarian sausage + soda",price:300,img:7},
-{id:"r11",name:"Roll Trio Combo",items:"3 beef rolls + Pepsi",price:250,img:2},
-{id:"r12",name:"Veggie Roll Feast",items:"3 vegetarian rolls + chips",price:250,img:2},
-{id:"r13",name:"Bhajia Family Snack",items:"12 bhajias + Pepsi",price:270,img:1},
-{id:"r14",name:"Kebab & Coffee",items:"Kebab + black coffee + toasted bread",price:280,img:5},
-{id:"r15",name:"Urban Snack Mix",items:"Samosa + beef roll + Pepsi",price:250,img:2},
-{id:"r16",name:"Chips & White Coffee",items:"Chips + white coffee + toasted bread",price:390,img:5},
-{id:"r17",name:"Ugali Power Combo",items:"Ugali + fry meat",price:450,img:6},
-{id:"r18",name:"Quarter Chicken Feast",items:"Quarter chicken + chips",price:450,img:4},
-{id:"r19",name:"Chicken & Ugali",items:"Quarter chicken + ugali",price:390,img:6},
-{id:"r20",name:"Chicken Snack Feast",items:"Quarter chicken + chips + soda",price:520,img:4},
-{id:"r21",name:"Choma & Ugali",items:"Choma beef + ugali",price:650,img:3},
-{id:"r22",name:"Choma Chips Combo",items:"Choma beef + chips",price:700,img:3},
-{id:"r23",name:"Urban Choma Feast",items:"Choma beef + chips + soda",price:780,img:3}
-];
+  // Double meals
+  {id:"d1",section:"double",name:"Double Chips & Soda",desc:"Two portions of chips and two sodas.",price:450,tag:"FOR TWO",img:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=700&q=80"},
+  {id:"d2",section:"double",name:"Two Chicken & Ugali Meals",desc:"Two quarter-chicken meals served with ugali.",price:750,tag:"DOUBLE MEAL",img:"https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=700&q=80"},
+  {id:"d3",section:"double",name:"Two Chapati Combos",desc:"Chapati and beans for two people.",price:450,tag:"BUDGET FOR TWO",img:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80"},
+  {id:"d4",section:"double",name:"Two Beef Roll Combos",desc:"Two beef rolls with two sodas.",price:350,tag:"SHARE A SNACK",img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80"},
+  {id:"d5",section:"double",name:"Choma & Chips for Two",desc:"Choma beef, chips and two sodas.",price:850,tag:"CHOMA SPECIAL",img:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"},
+  {id:"d6",section:"double",name:"Two Hungarian & Chips",desc:"Two Hungarian sausages with chips to share.",price:400,tag:"DOUBLE TREAT",img:"https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=700&q=80"},
 
-const photos = [
-"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=650&q=80",
-"https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=650&q=80",
-"https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=650&q=80",
-"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=650&q=80",
-"https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=650&q=80",
-"https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=650&q=80",
-"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=650&q=80",
-"https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=650&q=80"
-];
+  // Triple meals
+  {id:"t1",section:"triple",name:"Triple Chips & Soda",desc:"Three portions of chips and three sodas.",price:650,tag:"FOR THREE",img:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=700&q=80"},
+  {id:"t2",section:"triple",name:"Three Chapati Combos",desc:"Chapati and beans portions for three.",price:650,tag:"GROUP DEAL",img:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80"},
+  {id:"t3",section:"triple",name:"Chicken Trio",desc:"Three quarter-chicken and ugali meals.",price:1100,tag:"CHICKEN FEAST",img:"https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=700&q=80"},
+  {id:"t4",section:"triple",name:"Three Snack Combos",desc:"Three beef rolls and three sodas.",price:500,tag:"SNACK TRIO",img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80"},
+  {id:"t5",section:"triple",name:"Triple Hungarian Combo",desc:"Three Hungarian sausages with chips and drinks.",price:650,tag:"GROUP FAVOURITE",img:"https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=700&q=80"},
 
-const cart = {};
-const money = n => "KSh " + n.toLocaleString("en-KE");
+  // Couples
+  {id:"c1",section:"couples",name:"Couples Chicken Feast",desc:"Two quarter chickens, chips and two sodas.",price:950,tag:"COUPLES FAVOURITE",img:"https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=700&q=80"},
+  {id:"c2",section:"couples",name:"Date Night Choma",desc:"Choma beef, chips and two sodas to share.",price:850,tag:"DATE NIGHT",img:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"},
+  {id:"c3",section:"couples",name:"Coffee & Sandwich for Two",desc:"Two sandwiches and two coffees.",price:550,tag:"COFFEE DATE",img:"https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=700&q=80"},
+  {id:"c4",section:"couples",name:"Sweet Sharing Combo",desc:"Chips, two snacks and two sodas.",price:550,tag:"SHARE THE LOVE",img:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=700&q=80"},
 
-function render(){
- const query=document.getElementById("search").value.trim().toLowerCase();
- const matches=c=>(c.name+" "+c.items).toLowerCase().includes(query);
- const offers=combos.filter(c=>c.offer&&matches(c));
- const doubles=combos.filter(c=>c.double&&matches(c));
- const regular=combos.filter(c=>!c.offer&&!c.double&&matches(c)).sort((a,b)=>a.price-b.price);
- draw(offers,"offers");
- draw(doubles,"double");
- draw(regular,"regular");
- document.getElementById("noresults").hidden=offers.length+doubles.length+regular.length>0;
-}
+  // Family meals
+  {id:"f1",section:"family",name:"Family Chicken Feast",desc:"Four quarter chickens, chips and four sodas.",price:1800,tag:"FAMILY PICK",img:"https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=700&q=80"},
+  {id:"f2",section:"family",name:"Family Choma Feast",desc:"Choma beef, chips and four sodas for sharing.",price:1050,tag:"CHOMA FAMILY DEAL",img:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"},
+  {id:"f3",section:"family",name:"Family Chips Party",desc:"Four portions of chips and four sodas.",price:850,tag:"PARTY DEAL",img:"https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=700&q=80"},
+  {id:"f4",section:"family",name:"Family Chapati Feast",desc:"Four chapati-and-beans combos.",price:850,tag:"FAMILY BUDGET",img:"https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80"},
+  {id:"f5",section:"family",name:"Family Snack Box",desc:"Four beef rolls, four Hungarian sausages and drinks.",price:950,tag:"SHARING BOX",img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80"},
 
-function draw(items,target){
- const el=document.getElementById(target);
- el.replaceChildren();
- items.forEach(c=>{
-  const card=document.createElement("article");card.className="card";
-  const img=document.createElement("img");
-  img.src=photos[c.img];
-  img.alt=c.name+" food photo";
-  img.loading="lazy";
-  img.onerror=()=>{img.onerror=null;img.src="https://placehold.co/600x400/fff0d7/704214?text=Urban+Bites";};
-  const body=document.createElement("div");body.className="cardbody";
-  if(c.tag){
-   const tag=document.createElement("span");
-   tag.className="tag";tag.textContent=c.tag;body.append(tag);
-  }
-  const h=document.createElement("h3");h.textContent=c.name;
-  const p=document.createElement("p");p.textContent=c.items;
-  const price=document.createElement("div");price.className="price";price.textContent=money(c.price);
-  const btn=document.createElement("button");btn.className="add";btn.textContent="＋ Add combo";
-  btn.onclick=()=>add(c.id);
-  body.append(h,p,price,btn);card.append(img,body);el.append(card);
- });
-}
-
-function add(id){cart[id]=(cart[id]||0)+1;drawCart();}
-
-function adjust(id,delta){
- cart[id]=(cart[id]||0)+delta;
- if(cart[id]<=0)delete cart[id];
- drawCart();
-}
-
-function drawCart(){
- const el=document.getElementById("cartitems");el.replaceChildren();
- const entries=combos.filter(c=>cart[c.id]);
- document.getElementById("empty").hidden=entries.length>0;
- let total=0;
- entries.forEach(c=>{
-  total+=c.price*cart[c.id];
-  const row=document.createElement("div");row.className="cartrow";
-  const info=document.createElement("div");
-  const name=document.createElement("strong");name.textContent=c.name;
-  const sub=document.createElement("div");sub.textContent=money(c.price*cart[c.id]);
-  info.append(name,sub);
-  const controls=document.createElement("div");controls.className="qty";
-  const minus=document.createElement("button");minus.textContent="−";minus.onclick=()=>adjust(c.id,-1);
-  const count=document.createElement("span");count.textContent=cart[c.id];
-  const plus=document.createElement("button");plus.textContent="+";plus.onclick=()=>adjust(c.id,1);
-  controls.append(minus,count,plus);row.append(info,controls);el.append(row);
- });
- document.getElementById("total").textContent=money(total);
-}
-
-function checkout(){
- const entries=combos.filter(c=>cart[c.id]);
- if(!entries.length){alert("Please add a combo to your cart first.");return;}
- const name=document.getElementById("customer").value.trim();
- const location=document.getElementById("location").value.trim();
- const notes=document.getElementById("notes").value.trim();
- if(!name||!location){alert("Please enter your name and delivery location.");return;}
- let total=0;
- let msg="Hello Urban Bites! I want to order:\n\nName: "+name+"\nDelivery location: "+location+"\n\n";
- entries.forEach(c=>{
-  total+=c.price*cart[c.id];
-  msg+=cart[c.id]+" x "+c.name+" ("+c.items+") = "+money(c.price*cart[c.id])+"\n";
- });
- msg+="\nTOTAL: "+money(total)+"\nFree delivery included.\nPayment after delivery.";
- if(notes)msg+="\nExtra instructions: "+notes;
- msg+="\nPlease confirm availability and delivery time. Thank you!";
- window.location.href="https://wa.me/254799378702?text="+encodeURIComponent(msg);
-}
-
-document.getElementById("search").addEventListener("input",render);
-render();
-drawCart();
-</script>
-</body>
- </html>
- 
+  // Special offers
+  {id:"s1",section:"special",name:"Urban Bites Mega Combo",desc:"Choma beef, chips and soda.",price:800,tag:"MEGA DEAL",img:"https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"},
+  {id:"s2",section:"special",name:"Chicken Lover Special",desc:"Quarter chicken, chips and soda.",price:550,tag:"CHICKEN SPECIAL",img:"https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=700&q=80"},
+  {id:"s3",section:"special",name:"Snack 
